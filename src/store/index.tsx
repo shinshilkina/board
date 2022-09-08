@@ -4,19 +4,19 @@ import {Props} from '../types/todo';
 
 type TodosContextObject = {
   items: Todo[],
-  addTodo: (title: string) => void
+  addTodo: (todo: Todo) => void
 };
 
 export const TodosContext = React.createContext<TodosContextObject>({
   items: [],
-  addTodo: (title: string) => ({})
+  addTodo: (todo: Todo) => ({})
 });
 
 const TodosContextProvider: React.FC<Props> = ({ children }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const onAddTodoHandler = (title: string) => {
-    const newTodo = new Todo(title);
+  const onAddTodoHandler = (todo: Todo) => {
+    const newTodo = todo;
     setTodos((prevTodos) => {
       return prevTodos.concat(newTodo);
     });

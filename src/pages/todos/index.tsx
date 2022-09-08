@@ -1,5 +1,4 @@
-import NewTask from '../../components/tasks/NewTask';
-import TasksList from '../../components/tasks/TasksList';
+import TasksBlocks from '../../components/tasks/TasksBlocks';
 import TodosContextProvider from '../../store/index';
 
 
@@ -7,8 +6,7 @@ const Todos = () => {
   return (
     <TodosContextProvider>
       <h1>Todos</h1>
-      <NewTask />
-      <TasksList />
+      <TasksBlocks />
     </TodosContextProvider>
   );
 };

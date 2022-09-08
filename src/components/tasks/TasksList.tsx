@@ -2,16 +2,20 @@
 import { useContext } from 'react';
 import { TodosContext } from '../../store/index';
 
-const TasksList: React.FC = () => {
+interface TasksListProps {
+  block: string;
+}
+ 
+const TasksList: React.FC<TasksListProps> = ({ block })=> {
   const context = useContext(TodosContext);
-
   return (
     <ul>
       {
-        context.items.map(item => (
+        context.items.map(item => item.position === block && (
           <li key={item.id}>
-            <i>{item.id}</i>
-            <p>{item.title}</p>
+            <p> compteled {item.compteled}</p>
+            <input type="checkbox" checked={item.compteled} id={item.id}/>
+            <label htmlFor={item.id}>{item.title}</label>
           </li>
         ))
       }
